@@ -2,6 +2,7 @@ const express = require('express');
 const expressHandlebars = require('express-handlebars');
 const app = express();
 const port = process.env.PORT || 5000;
+const fortune = require('./lib/fortune');
 
 // Настройка механизма представлений Handlebars
 app.engine('handlebars', expressHandlebars({
@@ -11,20 +12,12 @@ app.engine('handlebars', expressHandlebars({
 app.set('view engine', 'handlebars');
 app.use(express.static(__dirname + '/public'));
 
-const fortunes = [
-  "Победи свои страхи, или они победят тебя.",
-  "Рекам нужны истоки.",
-  "Не бойся неведомого.",
-  "Тебя ждет приятный сюрприз.",
-  "Будь проще везде, где только можно.",
-]
+app.get('/', (req, res) => {
+  res.render('home', { fortune: fortune.getFortune() });
+})
 
 
-app.get('/', (req, res) => res.render('home'));
-app.get('/about', (req, res) => {
-  const randomFortune = fortunes[Math.floor(Math.random() * fortunes.length)];
-  res.render('about', { fortune: randomFortune });
-});
+app.get('/about', (req, res) => res.render('about'));
 
 
 // Пользовательская страница 404
