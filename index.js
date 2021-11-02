@@ -1,30 +1,30 @@
 const express = require('express');
+const expressHandlebars = require('express-handlebars');
 const app = express();
 const port = process.env.PORT || 5000;
 
-app.get('/', (req, res) => {
-  res.type('text/plain');
-  res.send('Meadowlark Travel');
-})
+// Настройка механизма представлений Handlebars
+app.engine('handlebars', expressHandlebars({
+  defaultLayout: 'main',
+}))
+app.set('view engine', 'handlebars');
 
-app.get('/about', (req, res) => {
-  res.type('text/plain');
-  res.send('О компании');
-})
+
+app.get('/', (req, res) => res.render('home'));
+
+app.get('/about', (req, res) => res.render('about'));
 
 // Пользовательская страница 404
 app.use((req, res) => {
-  res.type('text/plain');
   res.status(404);
-  res.send('404 - Не найдено');
+  res.render('404');
 })
 
 // Пользовательская страница 500
 app.use((err, req, res, next) => {
   console.error(err.message);
-  res.type('text/plain');
   res.status(500);
-  res.send('500 - Ошибка сервера');
+  res.send('500');
 })
 
 app.listen(port, () => console.log(`Express запущен на http://localhost:${port}; ` + `нажмите Ctrl+C для заверщения.`));
