@@ -2,6 +2,16 @@ const express = require('express');
 const app = express();
 const port = process.env.PORT || 5000;
 
+app.get('/', (req, res) => {
+  res.type('text/plain');
+  res.send('Meadowlark Travel');
+})
+
+app.get('/about', (req, res) => {
+  res.type('text/plain');
+  res.send('О компании');
+})
+
 // Пользовательская страница 404
 app.use((req, res) => {
   res.type('text/plain');
