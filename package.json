@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "lint": "eslint index.js lib"
   },
   "author": "rivep",
   "license": "ISC",
@@ -13,6 +14,9 @@
     "express-handlebars": "^5.3.4"
   },
   "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.3.0",
+    "@typescript-eslint/parser": "^5.3.0",
+    "eslint": "^8.1.0",
     "jest": "^27.3.1",
     "portfinder": "^1.0.28",
     "puppeteer": "^11.0.0"
