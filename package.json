@@ -13,6 +13,8 @@
     "express-handlebars": "^5.3.4"
   },
   "devDependencies": {
-    "jest": "^27.3.1"
+    "jest": "^27.3.1",
+    "portfinder": "^1.0.28",
+    "puppeteer": "^11.0.0"
   }
 }
