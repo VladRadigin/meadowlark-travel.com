@@ -4,6 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "node index",
+    "dev": "nodemon index",
     "test": "jest",
     "lint": "eslint index.js lib"
   },
@@ -18,6 +20,7 @@
     "@typescript-eslint/parser": "^5.3.0",
     "eslint": "^8.1.0",
     "jest": "^27.3.1",
+    "nodemon": "^2.0.14",
     "portfinder": "^1.0.28",
     "puppeteer": "^11.0.0"
   }
